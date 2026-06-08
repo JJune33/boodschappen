@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boodschappenbriefje</title>
+  <link rel="stylesheet" href="briefje.css">
+</head>
+<body>
+  <main class="note-page">
+    <section class="paper-note" aria-labelledby="pageTitle">
+      <div class="tape tape-left" aria-hidden="true"></div>
+      <div class="tape tape-right" aria-hidden="true"></div>
+
+      <header class="note-header">
+        <p class="small-note">niet vergeten</p>
+        <h1 id="pageTitle">Boodschappen</h1>
+      </header>
+
+      <form id="addForm" class="add-form note-form">
+        <label class="sr-only" for="itemInput">Boodschap toevoegen</label>
+        <input id="itemInput" type="text" autocomplete="off" placeholder="Schrijf iets op..." required>
+        <button type="submit">op briefje</button>
+      </form>
+
+      <p id="status" class="status" aria-live="polite"></p>
+      <ul id="list" class="list note-list"></ul>
+
+      <footer class="paper-footer" aria-hidden="true">
+        <span>markt</span>
+        <span>winkel</span>
+        <span>thuis</span>
+      </footer>
+    </section>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
