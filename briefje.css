@@ -206,7 +206,7 @@ button:hover {
   background: transparent;
   border: 0;
   border-radius: 0;
-  font-size: clamp(1.45rem, 4.8vw, 2.08rem);
+  font-size: clamp(1.75rem, 5.6vw, 2.45rem);
   line-height: 1.1;
 }
 
@@ -255,12 +255,16 @@ button:hover {
 }
 
 .item.done .name {
-  position: relative;
-  color: rgba(28, 45, 66, .64);
+  color: var(--ink);
   font-weight: 700;
 }
 
-.item.done .name::after {
+.item:not(.done) .name {
+  position: relative;
+  color: rgba(28, 45, 66, .64);
+}
+
+.item:not(.done) .name::after {
   content: "";
   position: absolute;
   left: -.12em;
