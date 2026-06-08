@@ -249,7 +249,8 @@ button:hover {
 }
 
 .name {
-  display: inline;
+  position: relative;
+  display: inline-block;
   padding: 0 .16em;
   border-radius: 45% 22% 40% 18%;
 }
@@ -260,20 +261,43 @@ button:hover {
 }
 
 .item:not(.done) .name {
-  position: relative;
   color: rgba(28, 45, 66, .64);
 }
 
 .item:not(.done) .name::after {
   content: "";
   position: absolute;
+  left: -.18em;
+  right: -.18em;
+  top: 50%;
+  height: .12em;
+  background:
+    linear-gradient(90deg,
+      transparent 0 2%,
+      rgba(28, 45, 66, .78) 2% 19%,
+      rgba(28, 45, 66, .62) 19% 24%,
+      rgba(28, 45, 66, .82) 24% 71%,
+      rgba(28, 45, 66, .66) 71% 77%,
+      rgba(28, 45, 66, .8) 77% 98%,
+      transparent 98% 100%);
+  border-radius: 999px 58% 999px 42%;
+  transform: translateY(-50%) rotate(-2.4deg);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.item:not(.done) .name::before {
+  content: "";
+  position: absolute;
   left: -.12em;
-  right: -.14em;
-  top: 54%;
-  height: .16em;
-  background: rgba(28, 45, 66, .72);
+  right: -.12em;
+  top: calc(50% + .04em);
+  height: .045em;
+  background: rgba(28, 45, 66, .46);
   border-radius: 999px;
-  transform: rotate(-2deg);
+  transform: translateY(-50%) rotate(.8deg);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .delete {
