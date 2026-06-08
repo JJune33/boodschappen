@@ -59,7 +59,7 @@ export async function onRequest(context) {
     items.push({
       id: crypto.randomUUID(),
       name,
-      done: false,
+      done: true,
       createdAt: new Date().toISOString()
     });
 
@@ -89,7 +89,9 @@ export async function onRequest(context) {
     const items = await readItems(env);
 
     let nextItems;
-    if (body.doneOnly) {
+    if (body.uncheckedOnly) {
+      nextItems = items.filter((item) => item.done);
+    } else if (body.doneOnly) {
       nextItems = items.filter((item) => !item.done);
     } else if (body.id) {
       nextItems = items.filter((item) => item.id !== body.id);
