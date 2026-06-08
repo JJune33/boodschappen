@@ -36,4 +36,7 @@ Deploy daarna opnieuw.
 
 ## Belangrijk
 
+
 In wrangler.toml staan bewust geen KV ids. De KV binding regel je via het Cloudflare dashboard.
+
+redeploy
