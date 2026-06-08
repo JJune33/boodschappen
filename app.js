@@ -2,7 +2,6 @@ const form = document.querySelector('#addForm');
 const input = document.querySelector('#itemInput');
 const list = document.querySelector('#list');
 const statusEl = document.querySelector('#status');
-const clearDoneBtn = document.querySelector('#clearDone');
 
 function setStatus(message) {
   statusEl.textContent = message || '';
@@ -108,16 +107,4 @@ form.addEventListener('submit', async (event) => {
     input.focus();
   }
 });
-
-clearDoneBtn.addEventListener('click', async () => {
-  setStatus('Niet aangevinkte boodschappen verwijderen...');
-  try {
-    const data = await api('DELETE', { uncheckedOnly: true });
-    render(data.items);
-    setStatus('Klaar.');
-  } catch (error) {
-    setStatus(error.message);
-  }
-});
-
 loadItems();
