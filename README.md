@@ -1,107 +1,39 @@
-# Boodschappenlijst met Cloudflare Pages Functions en KV
+# Boodschappenlijst met Cloudflare Pages en KV
 
-Eenvoudige boodschappen web app met opslag in Cloudflare KV.
+## Uploaden naar GitHub
 
-## Bestanden
+1. Pak deze zip uit.
+2. Maak een nieuwe GitHub repository.
+3. Klik in GitHub op Add file > Upload files.
+4. Sleep alle bestanden en mappen uit deze map naar GitHub.
+5. Klik op Commit changes.
 
-```text
-index.html
-style.css
-app.js
-404.html
-_headers
-_redirects
-functions/_lib/storage.js
-functions/api/boodschappen/index.js
-functions/api/boodschappen/[id].js
-wrangler.toml
-package.json
-.gitignore
-```
+## Cloudflare Pages
 
-## Functionaliteit
+Maak een nieuw Pages project en koppel de GitHub repository.
 
-- Boodschap toevoegen
-- Boodschappen tonen
-- Vinkje aan en uit zetten
-- Boodschap verwijderen
-- Alles wissen
-- Opslag in Cloudflare KV
-- Sortering: eerst aangevinkt, daarna alfabetisch
-- Bij aanpassen van een vinkje wordt de lijst opnieuw geladen
+Instellingen:
 
-## Naar GitHub uploaden
+- Framework preset: None
+- Build command: leeg laten
+- Build output directory: .
+- Root directory: leeg laten
 
-1. Maak een nieuwe repository aan op GitHub.
-2. Upload alle bestanden uit deze map naar de hoofdmap van je repository.
-3. Commit de bestanden.
+## KV koppelen
 
-## Cloudflare Pages koppelen
+Maak in Cloudflare een KV namespace aan, bijvoorbeeld boodschappen-kv.
 
-1. Ga naar Cloudflare Dashboard.
-2. Ga naar Workers & Pages.
-3. Kies Create application.
-4. Kies Pages.
-5. Koppel je GitHub repository.
-6. Gebruik deze instellingen:
+Ga daarna naar je Pages project:
 
-```text
-Framework preset: None
-Build command: leeg laten
-Build output directory: .
-Root directory: leeg laten
-```
+Settings > Bindings > Add binding > KV namespace
 
-## KV namespace maken
+Gebruik:
 
-1. Ga in Cloudflare naar Storage & Databases.
-2. Kies KV.
-3. Maak een namespace aan, bijvoorbeeld:
+- Variable name: BOODSCHAPPEN_KV
+- KV namespace: jouw aangemaakte namespace
 
-```text
-boodschappen-kv
-```
+Deploy daarna opnieuw.
 
-## KV binding toevoegen aan Pages
+## Belangrijk
 
-1. Open je Pages project.
-2. Ga naar Settings.
-3. Ga naar Bindings.
-4. Voeg een KV namespace binding toe.
-5. Gebruik exact deze variable name:
-
-```text
-BOODSCHAPPEN_KV
-```
-
-6. Kies je KV namespace, bijvoorbeeld `boodschappen-kv`.
-7. Sla op.
-8. Start een nieuwe deploy.
-
-## Lokaal testen
-
-Installeer eerst dependencies:
-
-```bash
-npm install
-```
-
-Start lokaal:
-
-```bash
-npm run dev
-```
-
-## API routes
-
-```text
-GET    /api/boodschappen
-POST   /api/boodschappen
-PATCH  /api/boodschappen/:id
-DELETE /api/boodschappen/:id
-DELETE /api/boodschappen
-```
-
-## Let op
-
-De app werkt pas online als de KV binding `BOODSCHAPPEN_KV` in Cloudflare Pages is toegevoegd.
+In wrangler.toml staan bewust geen KV ids. De KV binding regel je via het Cloudflare dashboard.

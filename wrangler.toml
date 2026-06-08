@@ -1,8 +1,3 @@
 name = "boodschappen-kv-pages-app"
 compatibility_date = "2026-06-08"
 pages_build_output_dir = "."
-
-[[kv_namespaces]]
-binding = "BOODSCHAPPEN_KV"
-id = "VUL_HIER_JE_KV_NAMESPACE_ID_IN"
-preview_id = "VUL_HIER_JE_PREVIEW_KV_NAMESPACE_ID_IN"
