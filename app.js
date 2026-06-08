@@ -40,7 +40,7 @@ function render(items) {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = item.done;
-    checkbox.setAttribute('aria-label', `${item.name} afvinken`);
+    checkbox.setAttribute('aria-label', `${item.name} nodig aan of uit zetten`);
     checkbox.addEventListener('change', async () => {
       setStatus('Opslaan...');
       try {
@@ -110,9 +110,9 @@ form.addEventListener('submit', async (event) => {
 });
 
 clearDoneBtn.addEventListener('click', async () => {
-  setStatus('Aangevinkte boodschappen verwijderen...');
+  setStatus('Niet aangevinkte boodschappen verwijderen...');
   try {
-    const data = await api('DELETE', { doneOnly: true });
+    const data = await api('DELETE', { uncheckedOnly: true });
     render(data.items);
     setStatus('Klaar.');
   } catch (error) {

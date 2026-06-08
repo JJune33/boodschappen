@@ -1,18 +1,22 @@
 # Boodschappenlijst met Cloudflare Pages en KV
 
+## Wat zit erin
+
+- Websitebestanden direct in de hoofdmap
+- Een API bestand: `functions/api/boodschappen.js`
+- Geen `public` map
+- Geen `wrangler.toml`
+- KV binding via het Cloudflare dashboard
+
 ## Uploaden naar GitHub
 
 1. Pak deze zip uit.
-2. Maak een nieuwe GitHub repository.
-3. Klik in GitHub op Add file > Upload files.
-4. Sleep alle bestanden en mappen uit deze map naar GitHub.
-5. Klik op Commit changes.
+2. Open de map waar `index.html` direct in staat.
+3. Maak een nieuwe GitHub repository of open je bestaande repo.
+4. Upload alle bestanden en de map `functions` naar GitHub.
+5. Klik op `Commit changes`.
 
-## Cloudflare Pages
-
-Maak een nieuw Pages project en koppel de GitHub repository.
-
-Instellingen:
+## Cloudflare Pages instellingen
 
 - Framework preset: None
 - Build command: leeg laten
@@ -21,22 +25,23 @@ Instellingen:
 
 ## KV koppelen
 
-Maak in Cloudflare een KV namespace aan, bijvoorbeeld boodschappen-kv.
+Maak in Cloudflare een KV namespace aan, bijvoorbeeld `boodschappen-kv`.
 
 Ga daarna naar je Pages project:
 
-Settings > Bindings > Add binding > KV namespace
+`Settings > Bindings > Add > KV namespace`
 
-Gebruik:
+Gebruik exact:
 
-- Variable name: BOODSCHAPPEN_KV
+- Variable name: `BOODSCHAPPEN_KV`
 - KV namespace: jouw aangemaakte namespace
 
-Deploy daarna opnieuw.
+Na het toevoegen van de binding moet je opnieuw deployen. De makkelijkste manier is een kleine wijziging committen in GitHub.
 
-## Belangrijk
+## Werking
 
-
-In wrangler.toml staan bewust geen KV ids. De KV binding regel je via het Cloudflare dashboard.
-
-redeploy
+- Nieuwe boodschappen krijgen meteen een vinkje aan.
+- Aangevinkte boodschappen staan bovenaan.
+- Binnen de aangevinkte en niet aangevinkte groep wordt alfabetisch gesorteerd.
+- Aangevinkte boodschappen worden niet doorgestreept.
+- Als je een vinkje uitzet, gaat die boodschap naar de onderste groep.

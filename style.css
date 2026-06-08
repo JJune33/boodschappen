@@ -72,8 +72,9 @@ button:hover { opacity: .9; }
   height: 22px;
 }
 .item.done .name {
-  text-decoration: line-through;
-  color: #666;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
 }
 .delete {
   background: transparent;
