@@ -1,0 +1,13 @@
+{
+  "name": "boodschappen-kv-pages-app",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler pages dev . --kv BOODSCHAPPEN_KV",
+    "deploy": "wrangler pages deploy ."
+  },
+  "devDependencies": {
+    "wrangler": "latest"
+  }
+}

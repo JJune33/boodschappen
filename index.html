@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boodschappenlijst</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="app">
+    <section class="card">
+      <header class="header">
+        <div>
+          <p class="eyebrow">Cloudflare KV</p>
+          <h1>Boodschappenlijst</h1>
+        </div>
+        <button id="refreshButton" class="ghost" type="button" title="Vernieuwen">↻</button>
+      </header>
+
+      <form id="addForm" class="add-form" autocomplete="off">
+        <label class="sr-only" for="itemInput">Boodschap toevoegen</label>
+        <input id="itemInput" name="name" type="text" placeholder="Bijvoorbeeld melk" maxlength="80" required>
+        <button type="submit">Toevoegen</button>
+      </form>
+
+      <p id="status" class="status" role="status"></p>
+
+      <ul id="list" class="list" aria-label="Boodschappen"></ul>
+
+      <button id="clearButton" class="danger" type="button">Alles wissen</button>
+    </section>
+  </main>
+
+  <template id="itemTemplate">
+    <li class="item">
+      <label>
+        <input class="checkbox" type="checkbox">
+        <span class="name"></span>
+      </label>
+      <button class="delete" type="button" aria-label="Verwijderen">×</button>
+    </li>
+  </template>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
