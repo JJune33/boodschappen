@@ -12,6 +12,7 @@ body {
   padding: 24px;
 }
 .card {
+  position: relative;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 18px;
@@ -86,6 +87,35 @@ button:hover { opacity: .9; }
   text-align: center;
   padding: 22px;
 }
+
+.briefje-link {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fafafa;
+  color: #111;
+  text-decoration: none;
+  line-height: 1;
+  transition: background .15s ease, transform .15s ease, border-color .15s ease;
+}
+
+.briefje-link:hover {
+  background: #f0f0f0;
+  border-color: #bbb;
+  transform: translateY(-1px);
+}
+
+.briefje-link:focus-visible {
+  outline: 3px solid rgba(0,0,0,.18);
+  outline-offset: 3px;
+}
+
 @media (max-width: 520px) {
   .app { padding: 12px; }
   .card { padding: 16px; }
