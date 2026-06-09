@@ -43,7 +43,7 @@ body {
   position: relative;
   width: min(620px, 100%);
   min-height: 720px;
-  padding: 56px 46px 38px 70px;
+  padding: 62px 46px 50px 70px;
   border: 1px solid var(--paper-edge);
   border-radius: 5px 18px 10px 14px;
   background:
@@ -100,8 +100,39 @@ body {
   transform: rotate(7deg);
 }
 
+.editor-link {
+  position: absolute;
+  top: 56px;
+  right: 34px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 11px 6px;
+  border: 1px solid rgba(28, 45, 66, .2);
+  border-radius: 999px 820px 940px 860px;
+  color: rgba(28, 45, 66, .78);
+  background: rgba(255, 231, 96, .28);
+  box-shadow: 0 2px 0 rgba(83, 63, 4, .12);
+  text-decoration: none;
+  font-size: .98rem;
+  line-height: 1;
+  transform: rotate(2deg);
+}
+
+.editor-link:hover {
+  color: var(--ink);
+  background: rgba(255, 231, 96, .48);
+  transform: rotate(-.8deg) translateY(-1px);
+}
+
+.editor-link:focus-visible {
+  outline: 3px solid rgba(28, 45, 66, .22);
+  outline-offset: 4px;
+}
+
 .note-header {
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 
 .small-note {
@@ -113,6 +144,7 @@ body {
 
 h1 {
   margin: 0;
+  padding-right: 120px;
   font-size: clamp(2.8rem, 8vw, 5rem);
   line-height: .95;
   letter-spacing: .02em;
@@ -132,82 +164,35 @@ h1 {
   border: 0;
 }
 
-.note-form {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 12px;
-  margin: 26px 0 8px;
-}
-
-input,
-button {
-  font: inherit;
-}
-
-input {
-  width: 100%;
-  min-width: 0;
-  padding: 10px 4px 7px;
-  color: var(--ink);
-  background: transparent;
-  border: 0;
-  border-bottom: 2px solid rgba(28, 45, 66, .32);
-  border-radius: 0;
-  outline: none;
-}
-
-input::placeholder {
-  color: rgba(28, 45, 66, .42);
-}
-
-input:focus {
-  border-bottom-color: rgba(28, 45, 66, .72);
-}
-
-button {
-  border: 0;
-  border-radius: 999px 860px 820px 940px;
-  padding: 9px 15px;
-  color: #2c2509;
-  background: var(--highlight-yellow);
-  box-shadow: 0 2px 0 rgba(83, 63, 4, .24);
-  cursor: pointer;
-  transform: rotate(1.4deg);
-}
-
-button:hover {
-  filter: saturate(1.12);
-  transform: rotate(-.6deg) translateY(-1px);
-}
-
+.note-form,
 .status {
-  min-height: 28px;
-  margin: 8px 0 4px;
-  color: var(--muted-ink);
-  font-size: 1rem;
+  display: none !important;
 }
 
 .note-list {
   list-style: none;
   display: grid;
-  gap: 10px;
-  margin: 10px 0 0;
+  gap: 12px;
+  margin: 20px 0 0;
   padding: 0;
 }
 
 .item {
   position: relative;
   display: grid;
-  grid-template-columns: 31px 1fr auto;
+  grid-template-columns: 1fr;
   align-items: center;
-  gap: 10px;
   min-height: 38px;
   padding: 2px 0;
   background: transparent;
   border: 0;
   border-radius: 0;
-  font-size: clamp(1.75rem, 5.6vw, 2.45rem);
-  line-height: 1.1;
+  font-size: clamp(1.55rem, 5vw, 2.18rem);
+  line-height: 1.12;
+}
+
+.item:not(.done) {
+  display: none !important;
 }
 
 .item:nth-child(2n) {
@@ -230,88 +215,29 @@ button:hover {
   background: linear-gradient(transparent 44%, var(--highlight-green) 44% 79%, transparent 79%);
 }
 
-.item input[type="checkbox"] {
-  appearance: none;
-  width: 23px;
-  height: 23px;
-  margin: 0;
-  border: 2px solid rgba(28, 45, 66, .78);
-  border-radius: 48% 52% 42% 58%;
-  background: rgba(255, 255, 255, .12);
-  transform: rotate(-7deg);
-  cursor: pointer;
-}
-
-.item input[type="checkbox"]:checked {
-  background:
-    linear-gradient(45deg, transparent 43%, var(--ink) 44% 54%, transparent 55%),
-    linear-gradient(-45deg, transparent 47%, var(--ink) 48% 58%, transparent 59%);
+.item input[type="checkbox"],
+.delete {
+  display: none !important;
 }
 
 .name {
-  position: relative;
-  display: inline-block;
+  display: inline;
+  width: fit-content;
+  max-width: 100%;
   padding: 0 .16em;
   border-radius: 45% 22% 40% 18%;
+  color: var(--ink);
+  font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .item.done .name {
   color: var(--ink);
-  font-weight: 700;
+  text-decoration: none;
 }
 
-.item:not(.done) .name {
-  color: rgba(28, 45, 66, .64);
-}
-
-.item:not(.done) .name::after {
-  content: "";
-  position: absolute;
-  left: -.18em;
-  right: -.18em;
-  top: 50%;
-  height: .12em;
-  background:
-    linear-gradient(90deg,
-      transparent 0 2%,
-      rgba(28, 45, 66, .78) 2% 19%,
-      rgba(28, 45, 66, .62) 19% 24%,
-      rgba(28, 45, 66, .82) 24% 71%,
-      rgba(28, 45, 66, .66) 71% 77%,
-      rgba(28, 45, 66, .8) 77% 98%,
-      transparent 98% 100%);
-  border-radius: 999px 58% 999px 42%;
-  transform: translateY(-50%) rotate(-2.4deg);
-  z-index: 2;
-  pointer-events: none;
-}
-
-.item:not(.done) .name::before {
-  content: "";
-  position: absolute;
-  left: -.12em;
-  right: -.12em;
-  top: calc(50% + .04em);
-  height: .045em;
-  background: rgba(28, 45, 66, .46);
-  border-radius: 999px;
-  transform: translateY(-50%) rotate(.8deg);
-  z-index: 2;
-  pointer-events: none;
-}
-
-.delete {
-  padding: 4px 7px;
-  color: rgba(147, 34, 34, .76);
-  background: transparent;
-  box-shadow: none;
-  font-size: 1.05rem;
-  transform: rotate(-3deg);
-}
-
-.delete:hover {
-  color: #932222;
-  background: rgba(255, 155, 183, .22);
+.item.done .name::after {
+  content: none;
 }
 
 .empty {
@@ -321,6 +247,13 @@ button:hover {
   text-align: center;
   font-size: 1.45rem;
   transform: rotate(-1deg);
+}
+
+.view-hint {
+  margin: 30px 0 0;
+  color: rgba(28, 45, 66, .48);
+  font-size: 1.03rem;
+  transform: rotate(-1.3deg);
 }
 
 .paper-footer {
@@ -342,16 +275,22 @@ button:hover {
 
   .paper-note {
     min-height: calc(100vh - 36px);
-    padding: 52px 22px 34px 48px;
+    padding: 58px 22px 46px 48px;
     transform: rotate(-.6deg);
   }
 
-  .note-form {
-    grid-template-columns: 1fr;
+  .editor-link {
+    top: 46px;
+    right: 20px;
+    padding: 7px 9px 6px;
   }
 
-  button {
-    width: max-content;
+  .editor-text {
+    display: none;
+  }
+
+  h1 {
+    padding-right: 46px;
   }
 
   .paper-footer {

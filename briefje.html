@@ -12,12 +12,17 @@
       <div class="tape tape-left" aria-hidden="true"></div>
       <div class="tape tape-right" aria-hidden="true"></div>
 
+      <a class="editor-link" href="index.html" title="Boodschappen bewerken" aria-label="Boodschappen bewerken">
+        <span aria-hidden="true">✎</span>
+        <span class="editor-text">bewerken</span>
+      </a>
+
       <header class="note-header">
         <p class="small-note">niet vergeten</p>
         <h1 id="pageTitle">Boodschappen</h1>
       </header>
 
-      <form id="addForm" class="add-form note-form">
+      <form id="addForm" class="add-form note-form" hidden>
         <label class="sr-only" for="itemInput">Boodschap toevoegen</label>
         <input id="itemInput" type="text" autocomplete="off" placeholder="Schrijf iets op..." required>
         <button type="submit">op briefje</button>
@@ -25,6 +30,8 @@
 
       <p id="status" class="status" aria-live="polite"></p>
       <ul id="list" class="list note-list"></ul>
+
+      <p class="view-hint">Alleen meenemen wat is aangevinkt in de editor.</p>
 
       <footer class="paper-footer" aria-hidden="true">
         <span>markt</span>
