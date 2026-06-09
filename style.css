@@ -18,7 +18,7 @@ body {
   padding: 24px;
   box-shadow: 0 8px 30px rgba(0,0,0,.06);
 }
-h1 { margin: 0 0 16px; }
+h1 { margin: 0 0 18px; }
 .add-form {
   display: grid;
   grid-template-columns: 1fr auto;
