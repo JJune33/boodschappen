@@ -59,7 +59,7 @@ function render(items) {
     const remove = document.createElement('button');
     remove.type = 'button';
     remove.className = 'delete';
-    remove.textContent = 'X';
+    remove.textContent = 'x';
     remove.addEventListener('click', async () => {
       setStatus('Verwijderen...');
       try {
