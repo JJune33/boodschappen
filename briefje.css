@@ -145,7 +145,7 @@ body {
 h1 {
   margin: 0;
   padding-right: 120px;
-  font-size: clamp(2.8rem, 8vw, 5rem);
+  font-size: clamp(1.8rem, 7vw, 4.5rem);
   line-height: .95;
   letter-spacing: .02em;
   text-decoration: underline wavy rgba(28, 45, 66, .28);
