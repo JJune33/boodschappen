@@ -49,7 +49,7 @@ button:hover { opacity: .9; }
   color: #111;
 }
 .status {
-  min-height: 22px;
+  min-height: 12px;
   color: #555;
 }
 .list {
